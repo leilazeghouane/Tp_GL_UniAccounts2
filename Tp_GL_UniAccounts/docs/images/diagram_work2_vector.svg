@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" width="100%" height="auto" style="background:#ffffff; font-family:'Segoe UI', Tahoma, Arial, sans-serif;">
+    <defs>
+        <marker id="uArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#2b6cb0"/>
+        </marker>
+        <marker id="uRealize" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffffff" stroke="#2b6cb0" stroke-width="1.3"/>
+        </marker>
+        <marker id="uInherit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffffff" stroke="#2d3748" stroke-width="1.3"/>
+        </marker>
+        <filter id="boxShadow" x="-3%" y="-3%" width="106%" height="108%">
+            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+        </filter>
+    </defs>
+
+    <!-- Outer frame -->
+    <rect x="5" y="5" width="910" height="610" rx="8" fill="#f8fafc" stroke="#cbd5e0" stroke-width="1.5"/>
+
+    <!-- ==================== 1. STATE PATTERN (Top Left) ==================== -->
+    <g transform="translate(15, 15)">
+        <rect x="0" y="0" width="280" height="155" rx="6" fill="#ffffff" stroke="#3182ce" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="280" height="24" rx="6" fill="#ebf8ff"/>
+        <text x="140" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#2b6cb0">1. State Pattern (دورة حياة الحساب)</text>
+
+        <!-- AccountState Interface -->
+        <rect x="15" y="32" width="130" height="50" rx="4" fill="#f7fafc" stroke="#4a5568" stroke-width="1.2"/>
+        <text x="80" y="44" text-anchor="middle" font-size="8.5" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="80" y="57" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1a365d">AccountState</text>
+        <text x="80" y="72" text-anchor="middle" font-size="8" fill="#4a5568">+login(), activate(), close()</text>
+
+        <!-- StudentAccount Context -->
+        <rect x="160" y="32" width="105" height="50" rx="4" fill="#f7fafc" stroke="#2b6cb0" stroke-width="1.2"/>
+        <text x="212" y="48" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a365d">StudentAccount</text>
+        <text x="212" y="62" text-anchor="middle" font-size="8" fill="#4a5568">-currentState</text>
+        <text x="212" y="74" text-anchor="middle" font-size="8" fill="#2b6cb0">+login(), close()</text>
+
+        <!-- Delegation arrow -->
+        <path d="M 160 57 L 148 57" stroke="#2b6cb0" stroke-width="1.4" marker-end="url(#uArrow)"/>
+
+        <!-- 4 Concrete States -->
+        <rect x="8" y="98" width="60" height="42" rx="3" fill="#fffaf0" stroke="#dd6b20" stroke-width="1"/>
+        <text x="38" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#c05621">Pending</text>
+        <text x="38" y="128" text-anchor="middle" font-size="7.5" fill="#7b341e">منع الدخول</text>
+
+        <rect x="74" y="98" width="60" height="42" rx="3" fill="#f0fff4" stroke="#38a169" stroke-width="1"/>
+        <text x="104" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#276749">Active</text>
+        <text x="104" y="128" text-anchor="middle" font-size="7.5" fill="#22543d">دخول مسموح</text>
+
+        <rect x="140" y="98" width="64" height="42" rx="3" fill="#fff5f5" stroke="#e53e3e" stroke-width="1"/>
+        <text x="172" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#9b2c2c">Suspended</text>
+        <text x="172" y="128" text-anchor="middle" font-size="7.5" fill="#742a2a">معلّق مؤقتاً</text>
+
+        <rect x="210" y="98" width="60" height="42" rx="3" fill="#edf2f7" stroke="#4a5568" stroke-width="1"/>
+        <text x="240" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d3748">Closed</text>
+        <text x="240" y="128" text-anchor="middle" font-size="7.5" fill="#4a5568">مغلق نهائياً</text>
+
+        <path d="M 80 98 L 80 84" stroke="#4a5568" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+    </g>
+
+    <!-- ==================== 2. OBSERVER PATTERN (Top Center) ==================== -->
+    <g transform="translate(310, 15)">
+        <rect x="0" y="0" width="290" height="155" rx="6" fill="#ffffff" stroke="#319795" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="290" height="24" rx="6" fill="#e6fffa"/>
+        <text x="145" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#234e52">2. Observer Pattern (نظام الإشعارات والتدقيق)</text>
+
+        <!-- AccountRepository (Subject) -->
+        <rect x="15" y="32" width="115" height="50" rx="4" fill="#f7fafc" stroke="#234e52" stroke-width="1.2"/>
+        <text x="72" y="45" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;Subject / Singleton&gt;&gt;</text>
+        <text x="72" y="58" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1a365d">AccountRepository</text>
+        <text x="72" y="72" text-anchor="middle" font-size="8" fill="#234e52">+notifyObservers()</text>
+
+        <!-- AccountObserver Interface -->
+        <rect x="150" y="32" width="125" height="50" rx="4" fill="#f7fafc" stroke="#319795" stroke-width="1.2"/>
+        <text x="212" y="45" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="212" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a365d">AccountObserver</text>
+        <text x="212" y="72" text-anchor="middle" font-size="7.5" fill="#4a5568">+onAccountEvent(evt)</text>
+
+        <path d="M 130 57 L 146 57" stroke="#319795" stroke-width="1.4" marker-end="url(#uArrow)"/>
+
+        <!-- 3 Observers -->
+        <rect x="12" y="98" width="80" height="42" rx="3" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="52" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d3748">AuditObserver</text>
+        <text x="52" y="128" text-anchor="middle" font-size="7.5" fill="#718096">سجل التدقيق</text>
+
+        <rect x="102" y="98" width="85" height="42" rx="3" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="144" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d3748">EmailNotifier</text>
+        <text x="144" y="128" text-anchor="middle" font-size="7.5" fill="#718096">إشعار بريدي للطالب</text>
+
+        <rect x="197" y="98" width="82" height="42" rx="3" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="238" y="114" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d3748">AdminDashboard</text>
+        <text x="238" y="128" text-anchor="middle" font-size="7.5" fill="#718096">لوحة تحكم الإدارة</text>
+
+        <path d="M 170 98 L 170 84" stroke="#4a5568" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+    </g>
+
+    <!-- ==================== 3. ADAPTER PATTERN (Top Right) ==================== -->
+    <g transform="translate(615, 15)">
+        <rect x="0" y="0" width="290" height="155" rx="6" fill="#ffffff" stroke="#d69e2e" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="290" height="24" rx="6" fill="#fefcbf"/>
+        <text x="145" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#744210">3. Adapter Pattern (استيراد النظام القديم)</text>
+
+        <!-- StudentImporter Interface -->
+        <rect x="15" y="32" width="120" height="50" rx="4" fill="#f7fafc" stroke="#d69e2e" stroke-width="1.2"/>
+        <text x="75" y="45" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="75" y="58" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1a365d">StudentImporter</text>
+        <text x="75" y="72" text-anchor="middle" font-size="7.5" fill="#4a5568">+importStudents(): List</text>
+
+        <!-- LegacyStudentSystem (Adaptee) -->
+        <rect x="155" y="32" width="120" height="50" rx="4" fill="#fffaf0" stroke="#c05621" stroke-width="1.2"/>
+        <text x="215" y="45" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;Adaptee (مجمد)&gt;&gt;</text>
+        <text x="215" y="58" text-anchor="middle" font-size="9" font-weight="bold" fill="#7b341e">LegacyStudentSystem</text>
+        <text x="215" y="72" text-anchor="middle" font-size="7.5" fill="#4a5568">+fetchRecords(): List&lt;Str&gt;</text>
+
+        <!-- LegacyStudentAdapter -->
+        <rect x="40" y="98" width="210" height="45" rx="4" fill="#f7fafc" stroke="#b7791f" stroke-width="1.2"/>
+        <text x="145" y="113" text-anchor="middle" font-size="10" font-weight="bold" fill="#744210">LegacyStudentAdapter</text>
+        <text x="145" y="126" text-anchor="middle" font-size="7.5" fill="#4a5568">يقوم بتفكيك النصوص واستدعاء Builder لبناء كائنات نظامية</text>
+
+        <path d="M 75 98 L 75 84" stroke="#d69e2e" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+        <path d="M 215 98 L 215 84" stroke="#c05621" stroke-width="1.2" marker-end="url(#uArrow)"/>
+    </g>
+
+    <!-- ==================== 4. COMPOSITE PATTERN (Middle Left) ==================== -->
+    <g transform="translate(15, 185)">
+        <rect x="0" y="0" width="370" height="180" rx="6" fill="#ffffff" stroke="#38a169" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="370" height="24" rx="6" fill="#f0fff4"/>
+        <text x="185" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#22543d">4. Composite Pattern (شجرة الهيكل الجامعي والتعداد التراكمي)</text>
+
+        <!-- UniversityComponent Interface -->
+        <rect x="110" y="32" width="150" height="45" rx="4" fill="#f7fafc" stroke="#38a169" stroke-width="1.2"/>
+        <text x="185" y="44" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="185" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#22543d">UniversityComponent</text>
+        <text x="185" y="69" text-anchor="middle" font-size="8" fill="#4a5568">+countAccounts(): int | +printHierarchy()</text>
+
+        <!-- Leaf: StudentLeaf -->
+        <rect x="15" y="95" width="140" height="72" rx="4" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="85" y="110" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1a365d">StudentLeaf (ورقة)</text>
+        <line x1="15" y1="116" x2="155" y2="116" stroke="#e2e8f0"/>
+        <text x="85" y="130" text-anchor="middle" font-size="8" fill="#4a5568">-account: StudentAccount</text>
+        <text x="85" y="145" text-anchor="middle" font-size="8" fill="#2b6cb0">+countAccounts(): 1</text>
+        <text x="85" y="158" text-anchor="middle" font-size="7.5" fill="#718096">يمثل الطالب الفرد</text>
+
+        <!-- Composite: BaseCompositeUnit -->
+        <rect x="175" y="95" width="180" height="72" rx="4" fill="#f7fafc" stroke="#38a169" stroke-width="1"/>
+        <text x="265" y="109" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#22543d">BaseCompositeUnit (مركب)</text>
+        <line x1="175" y1="114" x2="355" y2="114" stroke="#e2e8f0"/>
+        <text x="265" y="126" text-anchor="middle" font-size="8" fill="#4a5568">-children: List&lt;Component&gt;</text>
+        <text x="265" y="139" text-anchor="middle" font-size="7.5" fill="#22543d">Group | Department | Faculty | Univ</text>
+        <text x="265" y="152" text-anchor="middle" font-size="8" fill="#2b6cb0">+countAccounts(): sum(children)</text>
+
+        <path d="M 85 95 L 85 86 L 145 86 L 145 79" stroke="#38a169" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+        <path d="M 265 95 L 265 86 L 225 86 L 225 79" stroke="#38a169" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+        <path d="M 355 125 C 380 125, 380 55, 262 55" stroke="#38a169" stroke-width="1.2" marker-end="url(#uArrow)"/>
+    </g>
+
+    <!-- ==================== 5. STRATEGY PATTERN (Middle Center/Right) ==================== -->
+    <g transform="translate(400, 185)">
+        <rect x="0" y="0" width="235" height="180" rx="6" fill="#ffffff" stroke="#805ad5" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="235" height="24" rx="6" fill="#faf5ff"/>
+        <text x="117" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#553c9e">5. Strategy (تصدير البيانات)</text>
+
+        <!-- ExportStrategy Interface -->
+        <rect x="40" y="35" width="155" height="50" rx="4" fill="#f7fafc" stroke="#805ad5" stroke-width="1.2"/>
+        <text x="117" y="48" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="117" y="61" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#44337a">ExportStrategy</text>
+        <text x="117" y="75" text-anchor="middle" font-size="8" fill="#4a5568">+export(accounts): String</text>
+
+        <!-- Concrete Strategies -->
+        <rect x="15" y="105" width="95" height="60" rx="4" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="62" y="122" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a365d">CsvExport</text>
+        <text x="62" y="137" text-anchor="middle" font-size="7.5" fill="#4a5568">تصدير جدولي</text>
+        <text x="62" y="150" text-anchor="middle" font-size="7.5" fill="#718096">CSV Format</text>
+
+        <rect x="125" y="105" width="95" height="60" rx="4" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="172" y="122" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a365d">JsonExport</text>
+        <text x="172" y="137" text-anchor="middle" font-size="7.5" fill="#4a5568">تصدير هيكلي</text>
+        <text x="172" y="150" text-anchor="middle" font-size="7.5" fill="#718096">JSON Format</text>
+
+        <path d="M 62 105 L 62 95 L 90 95 L 90 87" stroke="#805ad5" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+        <path d="M 172 105 L 172 95 L 140 95 L 140 87" stroke="#805ad5" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+    </g>
+
+    <!-- ==================== 6. DECORATOR PATTERN (Middle Right) ==================== -->
+    <g transform="translate(650, 185)">
+        <rect x="0" y="0" width="255" height="180" rx="6" fill="#ffffff" stroke="#dd6b20" stroke-width="1.5" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="255" height="24" rx="6" fill="#fffaf0"/>
+        <text x="127" y="16" text-anchor="middle" font-size="11" font-weight="bold" fill="#9c4221">6. Decorator (الخدمات الطلابية)</text>
+
+        <!-- StudentService Interface -->
+        <rect x="45" y="32" width="165" height="45" rx="4" fill="#f7fafc" stroke="#dd6b20" stroke-width="1.2"/>
+        <text x="127" y="44" text-anchor="middle" font-size="8" fill="#718096">&lt;&lt;interface&gt;&gt;</text>
+        <text x="127" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#9c4221">StudentService</text>
+        <text x="127" y="69" text-anchor="middle" font-size="7.5" fill="#4a5568">+getDescription(), getMonthlyCost()</text>
+
+        <!-- BasicStudentService -->
+        <rect x="10" y="90" width="105" height="40" rx="3" fill="#f7fafc" stroke="#4a5568" stroke-width="1"/>
+        <text x="62" y="105" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#1a365d">BasicStudentService</text>
+        <text x="62" y="118" text-anchor="middle" font-size="7.5" fill="#718096">الحزمة الأساسية المجانية</text>
+
+        <!-- ServiceDecorator -->
+        <rect x="125" y="90" width="120" height="40" rx="3" fill="#fffaf0" stroke="#dd6b20" stroke-width="1"/>
+        <text x="185" y="105" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#9c4221">ServiceDecorator</text>
+        <text x="185" y="118" text-anchor="middle" font-size="7.5" fill="#718096">wraps StudentService</text>
+
+        <!-- 3 Concrete Decorators -->
+        <rect x="10" y="140" width="75" height="32" rx="3" fill="#f7fafc" stroke="#dd6b20" stroke-width="1"/>
+        <text x="47" y="154" text-anchor="middle" font-size="8" font-weight="bold" fill="#744210">Library (500)</text>
+        <text x="47" y="165" text-anchor="middle" font-size="7" fill="#718096">إعارة الكتب</text>
+
+        <rect x="90" y="140" width="75" height="32" rx="3" fill="#f7fafc" stroke="#dd6b20" stroke-width="1"/>
+        <text x="127" y="154" text-anchor="middle" font-size="8" font-weight="bold" fill="#744210">Resto (1200)</text>
+        <text x="127" y="165" text-anchor="middle" font-size="7" fill="#718096">مطعم جامعي</text>
+
+        <rect x="170" y="140" width="75" height="32" rx="3" fill="#f7fafc" stroke="#dd6b20" stroke-width="1"/>
+        <text x="207" y="154" text-anchor="middle" font-size="8" font-weight="bold" fill="#744210">Net (800)</text>
+        <text x="207" y="165" text-anchor="middle" font-size="7" fill="#718096">إنترنت سريع</text>
+
+        <path d="M 62 90 L 62 82 L 100 82 L 100 77" stroke="#dd6b20" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+        <path d="M 185 90 L 185 82 L 150 82 L 150 77" stroke="#dd6b20" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#uRealize)"/>
+    </g>
+
+    <!-- ==================== 7. FACADE PATTERN (Bottom Full Width) ==================== -->
+    <g transform="translate(15, 380)">
+        <rect x="0" y="0" width="890" height="215" rx="6" fill="#ffffff" stroke="#2b6cb0" stroke-width="2" filter="url(#boxShadow)"/>
+        <rect x="0" y="0" width="890" height="28" rx="6" fill="#ebf8ff"/>
+        <text x="445" y="19" text-anchor="middle" font-size="12" font-weight="bold" fill="#2b6cb0">7. Facade Pattern (البوابة الموحدة الشاملة للنظام: UniAccountsFacade)</text>
+
+        <!-- Left Subsystem details -->
+        <rect x="20" y="40" width="460" height="160" rx="4" fill="#f8fafc" stroke="#cbd5e0" stroke-width="1"/>
+        <text x="35" y="60" font-size="10.5" font-weight="bold" fill="#1a365d">الصنف UniAccountsFacade: واجهة برمجية موحدة تخفي كل التعقيدات</text>
+        <line x1="20" y1="68" x2="480" y2="68" stroke="#cbd5e0"/>
+        
+        <text x="35" y="86" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ registerNewStudent(id, name, email, level, major, ...): StudentAccount</text>
+        <text x="50" y="98" font-size="8" fill="#718096">&gt; يستخدم Builder للتحقق والحفظ في Repository ثم يشعر Observer</text>
+
+        <text x="35" y="116" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ activateStudent(id), suspendStudent(id), closeStudent(id): void</text>
+        <text x="50" y="128" font-size="8" fill="#718096">&gt; يدير نمط State ويحدث التدقيق والبريد الإلكتروني ولوحة التحكم آلياً</text>
+
+        <text x="35" y="146" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ importLegacyStudents(): List&lt;StudentAccount&gt; | exportAccountsCsv/Json()</text>
+        <text x="50" y="158" font-size="8" fill="#718096">&gt; يفوض نمط Adapter لاستيراد النظام القديم ونمط Strategy لتصدير البيانات</text>
+
+        <text x="35" y="176" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ addLibraryService(id) | buildDemoUniversityHierarchy(): UniversityComposite</text>
+        <text x="50" y="188" font-size="8" fill="#718096">&gt; يربط خدمات Decorator ويبني الشجرة الهرمية بنمط Composite</text>
+
+        <!-- Right Subsystems Mapping Box -->
+        <rect x="500" y="40" width="370" height="160" rx="4" fill="#f7fafc" stroke="#3182ce" stroke-width="1.2"/>
+        <text x="685" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#2b6cb0">العلاقات التبسيطية للواجهة (Subsystem Delegations):</text>
+        <line x1="500" y1="66" x2="870" y2="66" stroke="#cbd5e0"/>
+
+        <text x="515" y="85" font-size="8.5" fill="#2d3748">• <tspan font-weight="bold" fill="#2b6cb0">Creational:</tspan> يستدعي Builder و Prototype لتجهيز الحسابات.</text>
+        <text x="515" y="105" font-size="8.5" fill="#2d3748">• <tspan font-weight="bold" fill="#319795">State &amp; Observer:</tspan> يفوض تغيير الحالات وتوزيع التنبيهات.</text>
+        <text x="515" y="125" font-size="8.5" fill="#2d3748">• <tspan font-weight="bold" fill="#d69e2e">Adapter &amp; Strategy:</tspan> يدير الاستيراد والتصدير بسطر واحد.</text>
+        <text x="515" y="145" font-size="8.5" fill="#2d3748">• <tspan font-weight="bold" fill="#38a169">Composite &amp; Decorator:</tspan> ينشئ شجرة الكليات وحساب الفواتير.</text>
+        <text x="515" y="172" font-size="8.5" font-weight="bold" fill="#22543d">النتيجة: كود العميل (Main) يستدعي دوال نظيفة دون معرفة تفاصيل الـ 10 أنماط.</text>
+    </g>
+</svg>

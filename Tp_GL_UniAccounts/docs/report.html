@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير مشروع نماذج التصميم - نظام UniAccounts</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+        @page {
+            size: A4 portrait;
+            margin: 10mm 12mm 10mm 12mm;
+            @bottom-center {
+                content: "صفحة " counter(page) " من " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 8.5pt;
+                color: #718096;
+            }
+        }
+
+        @page landscape-sheet {
+            size: A4 landscape;
+            margin: 6mm 8mm 6mm 8mm;
+            @bottom-center {
+                content: "صفحة " counter(page) " من " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 8.5pt;
+                color: #718096;
+            }
+        }
+
+        .landscape-page {
+            page: landscape-sheet;
+            break-before: page;
+            break-after: page;
+        }
+
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+            line-height: 1.55;
+            color: #2d3748;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 9.5pt;
+        }
+
+        .header-box {
+            border: 2px solid #2b6cb0;
+            background: linear-gradient(135deg, #f7fafc 0%, #ebf8ff 100%);
+            border-radius: 8px;
+            padding: 8px 16px;
+            margin-bottom: 10px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #cbd5e0;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+        }
+
+        .univ-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1a365d;
+            line-height: 1.3;
+        }
+
+        .univ-sub {
+            font-size: 9pt;
+            color: #4a5568;
+        }
+
+        .students-info {
+            text-align: left;
+            font-size: 8.5pt;
+            color: #2d3748;
+            direction: ltr;
+            line-height: 1.4;
+        }
+
+        .project-title {
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .project-title h1 {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #2b6cb0;
+            margin: 0;
+        }
+
+        .project-title .sub {
+            font-size: 9pt;
+            color: #4a5568;
+        }
+
+        .section-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #1a365d;
+            background-color: #edf2f7;
+            border-right: 4px solid #2b6cb0;
+            padding: 3px 10px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .pattern-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-right: 3.5px solid #3182ce;
+            padding: 6px 12px;
+            margin-bottom: 6px;
+            border-radius: 0 4px 4px 0;
+            font-size: 9pt;
+            line-height: 1.5;
+        }
+
+        .pattern-name {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #2b6cb0;
+            margin-bottom: 2px;
+        }
+
+        .q-label {
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0;
+            font-size: 8.5pt;
+            line-height: 1.45;
+        }
+
+        table.data-table th, table.data-table td {
+            border: 1px solid #cbd5e0;
+            padding: 5px 8px;
+            text-align: right;
+        }
+
+        table.data-table th {
+            background-color: #edf2f7;
+            color: #1a365d;
+            font-weight: 700;
+        }
+
+        table.data-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .terminal-box {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 7.5pt;
+            line-height: 1.35;
+            padding: 7px 12px;
+            border-radius: 6px;
+            direction: ltr;
+            text-align: left;
+            overflow-x: hidden;
+            white-space: pre-wrap;
+            margin: 6px 0;
+            border: 1px solid #3c3c3c;
+        }
+
+        .diagram-container {
+            text-align: center;
+            margin: 6px 0;
+            background: #ffffff;
+            padding: 6px;
+            border: 1.5px solid #cbd5e0;
+            border-radius: 6px;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .diagram-caption {
+            font-size: 8.5pt;
+            color: #4a5568;
+            font-weight: 600;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== الصفحة 1 (عمودية Portrait) ==================== -->
+    <div class="header-box">
+        <div class="header-top">
+            <div>
+                <div class="univ-title">جامعة الشهيد حمة لخضر - الوادي | كلية العلوم الدقيقة | قسم الإعلام الآلي</div>
+                <div class="univ-sub">مقياس: هندسة البرمجيات ونماذج التصميم (Design Patterns) - Master Informatique</div>
+            </div>
+            <div class="students-info">
+                <div><strong>إعداد الطالبين:</strong></div>
+                <div>1. <strong>Med Adel Kouidi</strong></div>
+                <div>2. <strong>Leila Zeghoune</strong></div>
+                <div style="color: #718096; font-size: 7.5pt; margin-top: 2px;">السنة الجامعية: 2026 / 2027</div>
+            </div>
+        </div>
+        <div class="project-title">
+            <h1>تقرير العمل التطبيقي: نماذج التصميم البرمجي (Design Patterns)</h1>
+            <div class="sub">مشروع نظام إدارة الحسابات والخدمات الجامعية <strong>(UniAccounts System)</strong></div>
+        </div>
+    </div>
+
+    <div class="section-title">1. تقديم المشروع والأهداف العامة</div>
+    <p style="margin: 3px 0 8px 0;">
+        يهدف مشروع <strong>UniAccounts</strong> إلى تصميم بنية برمجية متكاملة وقابلة للتوسيع لإدارة حسابات الطلبة، دورة حياة الحساب كاملة، اشتراكات الخدمات الطلابية، واستيراد بيانات الأنظمة القديمة مع التصدير بصيغ متعددة. تم تطبيق <strong>10 نماذج تصميم معيارية (GoF Patterns)</strong> موزعة على عملين تطبيقيين لحل مشكلات واقعية مع احترام مبادئ SOLID وتفادي الاقتران الوثيق (Loose Coupling).
+    </p>
+
+    <div class="section-title">2. الأنماط الإنشائية ومخطط الأصناف (TP 1 - Creational Patterns & UML)</div>
+
+    <!-- مخطط الأصناف UML الكامل للأنماط الإنشائية (Vector SVG) -->
+    <div class="diagram-container">
+        <img src="images/full_creat_diagram.svg" style="max-height: 200px;" alt="Creational Patterns UML Diagram">
+    </div>
+    <div class="diagram-caption">الشكل 1: مخطط الأصناف (UML Class Diagram) للأنماط الإنشائية الثلاثة (Builder, Singleton, Prototype) وعلاقاتها بكامل تفاصيلها</div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">1. نمط الباني (Builder Pattern) - الصنف StudentAccount.Builder</div>
+        <div><span class="q-label">• أين استعملته؟</span> كصنف داخلي ثابت متداخل <code>StudentAccount.Builder</code> مع واجهة بناء متسلسلة (Fluent API).</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> كائن الحساب يحتوي على 8 حقول منها الإجباري والاختياري. المنشئات التقليدية المتتالية (Telescoping Constructors) تسبب خلطاً في ترتيب المعاملات، بينما يوفر الباني بناءً مرناً خطوة بخطوة مع تدقيق صحة البريد والمستوى ومنع تكرار المعرف.</div>
+        <div><span class="q-label">• ماذا كان سيحدث لو لم تستعمله؟</span> أخطاء برمجية في ترتيب المعاملات، صعوبة قراءة الكود، واضطرار المبرمج لتمرير معاملات فارغة (nulls).</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">2. نمط المفرد (Singleton Pattern) - الصنفان AccountRepository و AuditLogger</div>
+        <div><span class="q-label">• أين استعملته؟</span> في المستودع المركزي <code>AccountRepository</code> وسجل العمليات <code>AuditLogger</code> بأسلوب حامل الفئة Bill Pugh Holder.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> ضمان وجود مرجع وحيد ونقطة وصول عالمية لحفظ الحسابات ومنع تكرار المعرفات، مع توثيق التدقيق الأمني بأمان خيوط (Thread Safety) ودون إبطاء التزامن المفرط.</div>
+        <div><span class="q-label">• ماذا كان سيحدث لو لم تستعمله؟</span> تشتت البيانات بين نُسخ متعددة في الذاكرة، ضياع الحسابات، وفقدان التسلسل الأمني للتدقيق.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">3. نمط النموذج الأولي (Prototype Pattern) - دالتا clone() و cloneWithNewIdentity()</div>
+        <div><span class="q-label">• أين استعملته؟</span> داخل الصنف <code>StudentAccount</code> لتطبيق استنساخ الحسابات مع النسخ العميق للمقررات (Deep Copy).</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> تجهيز قالب حساب جاهز لكل دفعة وتخصص ومستوى، واستنساخه مباشرة للطلبة بتعديل المعرف والاسم فقط، دون إعادة إدخال قائمة المقررات المشتركة يدوياً.</div>
+        <div><span class="q-label">• ماذا كان سيحدث لو لم تستعمله؟</span> كلفة معالجة عالية وتكرار إدخال المقررات مئات المرات مع احتمالية وقوع أخطاء إدخال يدوية.</div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ==================== الصفحة 2 (عمودية Portrait) ==================== -->
+    <div class="section-title">3. مخرجات تشغيل العمل الأول (TP 1) ومخطط حالات الحساب (State Machine)</div>
+
+    <div style="font-weight: 700; color: #1a365d; margin: 2px 0 1px 0;">لقطة شاشة مخرجات تشغيل برنامج MainWork1.java:</div>
+    <div class="terminal-box">
+[1] Singleton Pattern:
+repo1 == repo2     : true
+logger1 == logger2 : true
+
+[2] Builder Pattern:
+Created: StudentAccount[id='20240001', name='Med Adel Kouidi', email='medadel.kouidi@univ-eloued.dz', level='L3', major='Informatique (Genie Logiciel)', scholarship=true]
+Testing validations:
+Caught error (Email): Builder: email must contain '@'.
+Caught error (Level): Builder: invalid level. Allowed: [M1, L1, M2, L2, L3]
+Caught error (Duplicate ID): Duplicate Account ID: An account with ID '20240001' already exists!
+
+[3] Prototype Pattern:
+Template: StudentAccount[id='TEMPLATE_M1_IS', name='Template Batch IS', courses=[Data Warehousing, Advanced Databases, ERP Systems, Information Security]]
+Cloned 1: StudentAccount[id='20241001', name='Oualid Laroum', courses=[..., Cloud Computing]]
+Cloned 2: StudentAccount[id='20241002', name='Farah Kouidi']
+Template courses unchanged? true
+
+--- Repository Accounts (3) ---
+ - StudentAccount[id='20240001', name='Med Adel Kouidi']
+ - StudentAccount[id='20241001', name='Oualid Laroum']
+ - StudentAccount[id='20241002', name='Farah Kouidi']
+    </div>
+
+    <div class="section-title">4. دراسة أنماط العمل الثاني السلوكية (TP 2 - Behavioral Design Patterns)</div>
+
+    <!-- مخطط الحالات الكامل (Vector SVG) -->
+    <div class="diagram-container">
+        <img src="images/full_state_diagram.svg" style="max-height: 105px;" alt="State Machine UML Diagram">
+    </div>
+    <div class="diagram-caption">الشكل 2: مخطط حالات الحساب (UML State Machine Diagram) يوضح دورة حياة الحساب وانتقالات الحالات بكامل تفاصيلها</div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">4. نمط الحالة (State Pattern) - الواجهة AccountState والحالات الأربع</div>
+        <div><span class="q-label">• أين استعملته؟</span> في الواجهة <code>AccountState</code> والأصناف المنفذة: <code>PendingState</code>, <code>ActiveState</code>, <code>SuspendedState</code>, <code>ClosedState</code>.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> سلوك الحساب وقواعد تسجيل الدخول تتغير كلياً بحسب الحالة (منع الدخول للمعلّق أو المغلق). يوزع النمط السلوك على أصناف مستقلة تفوض الحساب تنفيذ العمليات بحسب حالته الراهنة، ويلغي شروط <code>switch/if-else</code> المتشعبة.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> كود معقد مكرر وصعب الصيانة، مع خطورة ثغرات أمنية عند إضافة أي حالة جديدة مستقبلاً.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">5. نمط المراقب (Observer Pattern) - الواجهة AccountObserver</div>
+        <div><span class="q-label">• أين استعملته؟</span> المراقبون: <code>AuditObserver</code> (سجل التدقيق)، <code>EmailNotifier</code> (البريد)، <code>AdminDashboard</code> (لوحة تحكم الإدارة).</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> إشعار جهات متعددة ومستقلة تلقائياً عند إنشاء أو تفعيل أو تعليق الحساب وفق نموذج النشر/الاشتراك (Publish/Subscribe) دون إحداث اقتران وثيق بالمستودع.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> تحول المستودع إلى كائن متضخم (God Object) واضطراره لمعرفة تفاصيل إرسال البريد وإحصاءات اللوحة مباشرة.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">6. نمط الاستراتيجية (Strategy Pattern) - الواجهة ExportStrategy</div>
+        <div><span class="q-label">• أين استعملته؟</span> خوارزميتا التصدير: <code>CsvExport</code> و <code>JsonExport</code>.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> دعم تصدير بيانات الحسابات بصيغ مختلفة مع إمكانية تبديل الخوارزمية ديناميكياً أثناء وقت التشغيل (Runtime Interchangeability).</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> تداخل منطق التنسيق مع منطق حفظ البيانات وانتهاك مبدأ المسؤولية الواحدة ومبدأ الفتح/الإغلاق (OCP).</div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ==================== الصفحة 3 (عمودية Portrait) ==================== -->
+    <div class="section-title">5. دراسة أنماط العمل الثاني البنائية (TP 2 - Structural Design Patterns)</div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">7. نمط التركيب (Composite Pattern) - شجرة الهيكل التنظيمي للجامعة</div>
+        <div><span class="q-label">• أين استعملته؟</span> الواجهة الموحدة <code>UniversityComponent</code>، الأوراق <code>StudentLeaf</code>، والحاويات المركبة: <code>GroupComposite</code>, <code>DepartmentComposite</code>, <code>FacultyComposite</code>, <code>UniversityComposite</code>.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> تمثيل التسلسل الهرمي للجامعة ومعاملة الطالب المفرد والمجموعة المركبة بنمط موحد، واحتساب إجمالي الطلبة تلقائياً عبر دالة <code>countAccounts()</code> التراكمية.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> كتابة دوال تكرار منفصلة ومعقدة لكل مستوى تنظيمي واستحالة حساب المجاميع التراكمية بمرونة.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">8. نمط المحول (Adapter Pattern) - الصنف LegacyStudentAdapter</div>
+        <div><span class="q-label">• أين استعملته؟</span> لتحويل بيانات النظام القديم المجمد <code>LegacyStudentSystem</code> إلى واجهة <code>StudentImporter</code> النظامية.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> قراءة نصوص السجلات القديمة واستخراج الحقول وتحويلها إلى كائنات <code>StudentAccount</code> نظامية بالاستعانة بالـ Builder دون تعديل كود النظام القديم.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> العجز التام عن استيراد بيانات الطلبة السابقين، أو تشويه معمارية النظام الجديد بحقول نصية غير متوافقة.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">9. نمط المزخرف (Decorator Pattern) - الخدمات الطلابية الإضافية</div>
+        <div><span class="q-label">• أين استعملته؟</span> <code>ServiceDecorator</code> وتفريعاته: <code>LibraryDecorator</code> (500 دج)، <code>RestaurantDecorator</code> (1200 دج)، <code>InternetDecorator</code> (800 دج).</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> تزويد الطلبة بتوليفات مختلفة من الخدمات الإضافية واحتساب الرسوم الشهرية والامتيازات تراكمياً في وقت التشغيل دون وراثة ثابتة.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> حدوث انفجار في عدد الأصناف (Class Explosion) لإنشاء صنف لكل توليفة محتملة من الخدمات.</div>
+    </div>
+
+    <div class="pattern-card">
+        <div class="pattern-name">10. نمط الواجهة الموحدة (Facade Pattern) - الصنف UniAccountsFacade</div>
+        <div><span class="q-label">• أين استعملته؟</span> في الصنف <code>UniAccountsFacade</code> كنقطة مدخل موحدة لكافة عمليات النظام.</div>
+        <div><span class="q-label">• ما المشكلة التي حلها؟</span> إخفاء تعقيدات الأنماط التسعة السابقة وتوفير واجهة مستخدم مبسطة تتيح تنفيذ العمليات المعقدة بسطر واحد.</div>
+        <div><span class="q-label">• ماذا لو لم تستعمله؟</span> تعقيد كود العميل واضطرار المبرمج لمعرفة تفاصيل عشرات الأصناف والواجهات وتنسيقها يدوياً مع كل عملية.</div>
+    </div>
+
+    <div class="section-title">جدول الربط المعياري الشامل بين الأنماط والأصناف في المشروع</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 14%;">النمط</th>
+                <th style="width: 12%;">نوعه</th>
+                <th style="width: 34%;">الأصناف والواجهات في الشفرة</th>
+                <th style="width: 40%;">الدور الوظيفي في نظام UniAccounts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Builder</strong></td><td>إنشائي</td><td><code>StudentAccount.Builder</code></td><td>بناء الحساب والتحقق من صحة المدخلات</td></tr>
+            <tr><td><strong>Singleton</strong></td><td>إنشائي</td><td><code>AccountRepository</code>, <code>AuditLogger</code></td><td>مستودع وحيد مانع للتكرار وسجل تدقيق مركزي</td></tr>
+            <tr><td><strong>Prototype</strong></td><td>إنشائي</td><td><code>StudentAccount.clone()</code></td><td>استنساخ قوالب الدفعات السريعة بنسخ عميق</td></tr>
+            <tr><td><strong>State</strong></td><td>سلوكي</td><td><code>AccountState</code>, <code>Pending</code>, <code>Active</code>, ...</td><td>إدارة دورة حياة الحساب وضوابط الدخول</td></tr>
+            <tr><td><strong>Observer</strong></td><td>سلوكي</td><td><code>AccountObserver</code>, <code>Audit</code>, <code>Email</code>, <code>Dash</code></td><td>إشعار تلقائي للبريد والتدقيق ولوحة التحكم</td></tr>
+            <tr><td><strong>Strategy</strong></td><td>سلوكي</td><td><code>ExportStrategy</code>, <code>CsvExport</code>, <code>JsonExport</code></td><td>تصدير الحسابات بصيغتي CSV و JSON</td></tr>
+            <tr><td><strong>Composite</strong></td><td>بنائي</td><td><code>UniversityComponent</code>, <code>Group</code>, <code>Faculty</code>, ...</td><td>شجرة هيكل الجامعة واحتساب أعداد الطلبة آلياً</td></tr>
+            <tr><td><strong>Adapter</strong></td><td>بنائي</td><td><code>LegacyStudentAdapter</code>, <code>LegacyStudentSystem</code></td><td>استيراد بيانات النظام القديم غير المتوافق</td></tr>
+            <tr><td><strong>Decorator</strong></td><td>بنائي</td><td><code>StudentService</code>, <code>Library</code>, <code>Restaurant</code>, ...</td><td>توليفات الخدمات الطلابية والرسوم الشهرية</td></tr>
+            <tr><td><strong>Facade</strong></td><td>بنائي</td><td><code>UniAccountsFacade</code></td><td>واجهة موحدة مبسطة تخفي تعقيدات النظام</td></tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- ==================== الصفحة 4 (أفقية بالعرض A4 Landscape) ==================== -->
+    <div class="landscape-page">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid #2b6cb0; padding-bottom:4px; margin-bottom:4px;">
+            <div style="font-size:11pt; font-weight:700; color:#1a365d;">
+                6. مخطط الأصناف الشامل لكامل النظام (Comprehensive UML Class Diagram - 31 Classes &amp; Interfaces)
+            </div>
+            <div style="font-size:8.5pt; color:#4a5568;">
+                نظام UniAccounts - يوضح الأنماط العشرة كاملة بجميع أصنافها وعلاقاتها
+            </div>
+        </div>
+
+        <!-- المخطط الشامل الكامل (جميع الأصناف الـ 31 دون إنقاص أي صنف) بدقة متجهة فائقة -->
+        <div style="width:100%; height:170mm; text-align:center; background:#ffffff; border:1px solid #cbd5e0; border-radius:6px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+            <img src="images/full_comp_diagram.svg" style="width:100%; height:100%; object-fit:contain;" alt="Full 31-Class UML Class Diagram">
+        </div>
+        <div style="font-size:7.5pt; color:#718096; text-align:center; margin-top:3px;">
+            الشكل 3: المخطط الشامل لكافة أصناف وواجهات النظام (جميع الأصناف الـ 31: State, Observer, Adapter, Composite, Strategy, Decorator, Facade) معروضة بالعرض الكامل (A4 Landscape) بدقة متجهة (Vector SVG) غير محدودة الوضوح.
+        </div>
+    </div>
+
+    <!-- ==================== الصفحة 5 (عمودية Portrait) ==================== -->
+    <div class="section-title">7. لقطات شاشة مخرجات تشغيل العمل الثاني الشامل (MainWork2)</div>
+
+    <div class="terminal-box">
+[1] State & Observer Demo:
+[AUDIT LOG] [STATE_CHANGE] Account '20240010' (Leila Zeghoune) state changed from PENDING to ACTIVE.
+[STATE] Account '20240010' is now ACTIVE.
+  [EMAIL DISPATCH] To: Leila Zeghoune &lt;leila.zeghoune@univ-eloued.dz&gt; | Subject: Status now ACTIVATED
+  [DASHBOARD UPDATE] New Event: ACTIVATED | Total ACTIVATED events: 1
+-> Login while ACTIVE: [ACCESS GRANTED] Welcome Leila Zeghoune! Login successful.
+-> Close account on graduation: [STATE] Account '20240010' has been CLOSED (Graduated).
+-> Login while CLOSED: [ACCESS DENIED] Account '20240010' is CLOSED (Graduated). Login is forbidden.
+
+[4] Decorator Pattern Demo (Student Services & Fees):
+--------------------------------------------------
+STUDENT SUBSCRIPTIONS: Nori Heni
+Package     : Basic University Package for Nori Heni + [Library Service] | Monthly Fee: 500,00 DZD
+Privileges  : Campus Ground Access, Student Card, Library Book Lending (Up to 5 books)
+--------------------------------------------------
+STUDENT SUBSCRIPTIONS: Mohammed Khadem
+Package     : Basic Package + [Library Service] + [Restaurant Service] + [High-Speed Internet] | Monthly Fee: 2500,00 DZD
+Privileges  : Library Lending, Daily Subsidized Meals, High-Speed Wi-Fi & Remote University VPN Access
+--------------------------------------------------
+
+[6] Composite Pattern Demo (Clean Hierarchy - 8 Target Students):
+  + [University] Universite Hamma Lakhdar - El Oued (Count: 8)
+     |+ [Faculty] Faculte des Sciences Exactes (Count: 8)
+     |   |+ [Department] Departement d'Informatique (Count: 8)
+     |   |   |+ [Group] Groupe 1 - Master Genie Logiciel (GL) (Count: 4)
+     |   |   |   |- [Student] 20240010 : Leila Zeghoune [L3, CLOSED]
+     |   |   |   |- [Student] 20240001 : Med Adel Kouidi [M2, ACTIVE]
+     |   |   |   |- [Student] 20240002 : Oualid Laroum [M2, ACTIVE]
+     |   |   |   |- [Student] 20240003 : Nori Heni [M2, ACTIVE]
+     |   |   |+ [Group] Groupe 2 - Master Systemes d'Information (SI) (Count: 4)
+     |   |   |   |- [Student] 20240004 : Mohammed Khadem [M2, ACTIVE]
+     |   |   |   |- [Student] 20240005 : Farah Kouidi [M2, ACTIVE]
+     |   |   |   |- [Student] 20240006 : Abdo Kacca [M2, ACTIVE]
+     |   |   |   |- [Student] 20240007 : Abdo Louthri [M2, ACTIVE]
+
+Total accounts in student tree: 8 | Faculte des Sciences Exactes : 8 accounts
+
+[7] Admin Dashboard Statistics:
+  CREATED : 8 | ACTIVATED : 9 | SUSPENDED : 1 | CLOSED : 1 | IMPORTED : 10 | TOTAL EVENTS : 29
+    </div>
+
+    <div class="section-title">8. توزيع المهام والعمل المنجز بين الطالبين (Work Distribution)</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">عضو الفريق</th>
+                <th style="width: 75%;">المهام والأنماط البرمجية المنجزة</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>الطالب: Med Adel Kouidi</strong></td>
+                <td>
+                    • تصميم الصنف الأساسي <code>StudentAccount</code> ونمط <code>Builder</code> مع دوال الفحص والتحقق الأمني للمدخلات.<br>
+                    • تطبيق نمط <code>Singleton</code> للمستودع <code>AccountRepository</code> ومسجل التدقيق <code>AuditLogger</code> (Bill Pugh Holder).<br>
+                    • هندسة دورة حياة الحساب وقواعد الأمان وتطبيق نمط <code>State</code> (Pending, Active, Suspended, Closed).<br>
+                    • تطوير نمط المحول <code>Adapter</code> لاستيراد سجلات النظام الجامعي القديم <code>LegacyStudentSystem</code>.<br>
+                    • بناء واجهة البوابة الموحدة <code>UniAccountsFacade</code> وبرنامج اختبار العمل الأول <code>MainWork1</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>الطالبة: Leila Zeghoune</strong></td>
+                <td>
+                    • تطبيق نمط النموذج الأولي <code>Prototype</code> واستنساخ قوالب الدفعات مع النسخ العميق للمقررات (Deep Copy).<br>
+                    • بناء نمط المراقب <code>Observer</code> بمشتركيه الثلاثة: التدقيق <code>Audit</code>، البريد <code>Email</code>، ولوحة الإدارة <code>Dashboard</code>.<br>
+                    • تطوير استراتيجيات التصدير بنمط <code>Strategy</code> لصيغتي <code>CsvExport</code> و <code>JsonExport</code>.<br>
+                    • بناء نظام الاشتراكات والخدمات الطلابية وتوليفات الرسوم الشهرية بنمط <code>Decorator</code>.<br>
+                    • بناء الشجرة الهرمية للجامعة بنمط <code>Composite</code> وتصميم برنامج اختبار العمل الثاني الشامل <code>MainWork2</code>.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

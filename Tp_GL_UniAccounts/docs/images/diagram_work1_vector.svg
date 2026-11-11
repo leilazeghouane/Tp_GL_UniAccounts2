@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 230" width="100%" height="auto" style="background:#ffffff; font-family:'Segoe UI', Tahoma, Arial, sans-serif;">
+    <defs>
+        <marker id="w1Arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#2b6cb0"/>
+        </marker>
+        <marker id="w1Dash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#4a5568"/>
+        </marker>
+    </defs>
+
+    <!-- StudentAccount -->
+    <rect x="10" y="8" width="255" height="212" rx="5" fill="#f8fafc" stroke="#2b6cb0" stroke-width="1.6"/>
+    <rect x="10" y="8" width="255" height="34" rx="5" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="1.6"/>
+    <text x="137" y="22" text-anchor="middle" font-size="9" font-weight="bold" fill="#2b6cb0">&lt;&lt;Prototype&gt;&gt;</text>
+    <text x="137" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a365d">StudentAccount</text>
+    <line x1="10" y1="42" x2="265" y2="42" stroke="#cbd5e0"/>
+    <text x="20" y="56" font-size="8.5" font-family="monospace" fill="#2d3748">- id: String</text>
+    <text x="20" y="69" font-size="8.5" font-family="monospace" fill="#2d3748">- fullName, email: String</text>
+    <text x="20" y="82" font-size="8.5" font-family="monospace" fill="#2d3748">- level, major, phone: String</text>
+    <text x="20" y="95" font-size="8.5" font-family="monospace" fill="#2d3748">- scholarship: boolean</text>
+    <text x="20" y="108" font-size="8.5" font-family="monospace" fill="#2d3748">- courses: List&lt;String&gt;</text>
+    <line x1="10" y1="114" x2="265" y2="114" stroke="#cbd5e0"/>
+    <text x="20" y="129" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ clone(): StudentAccount</text>
+    <text x="20" y="143" font-size="8.5" font-family="monospace" fill="#2b6cb0">+ cloneWithNewIdentity(id,name,mail)</text>
+    <text x="20" y="157" font-size="8.5" font-family="monospace" fill="#2d3748">+ addCourse(course): void</text>
+    <text x="20" y="171" font-size="8.5" font-family="monospace" fill="#2d3748">+ activate(), suspend(), close()</text>
+    <text x="20" y="185" font-size="8.5" font-family="monospace" fill="#2d3748">+ login(): boolean</text>
+    <text x="20" y="199" font-size="8.5" font-family="monospace" fill="#2d3748">+ getters &amp; toString()</text>
+
+    <!-- Builder -->
+    <rect x="295" y="8" width="205" height="212" rx="5" fill="#f8fafc" stroke="#2b6cb0" stroke-width="1.6"/>
+    <rect x="295" y="8" width="205" height="34" rx="5" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="1.6"/>
+    <text x="397" y="22" text-anchor="middle" font-size="9" font-weight="bold" fill="#2b6cb0">&lt;&lt;Builder (Nested)&gt;&gt;</text>
+    <text x="397" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a365d">StudentAccount.Builder</text>
+    <line x1="295" y1="42" x2="500" y2="42" stroke="#cbd5e0"/>
+    <text x="305" y="56" font-size="8.5" font-family="monospace" fill="#2d3748">- id, fullName, email (req)</text>
+    <text x="305" y="70" font-size="8.5" font-family="monospace" fill="#2d3748">- level, major, phone (opt)</text>
+    <text x="305" y="84" font-size="8.5" font-family="monospace" fill="#2d3748">- scholarship: boolean</text>
+    <text x="305" y="98" font-size="8.5" font-family="monospace" fill="#2d3748">- courses: List&lt;String&gt;</text>
+    <line x1="295" y1="105" x2="500" y2="105" stroke="#cbd5e0"/>
+    <text x="305" y="120" font-size="8.5" font-family="monospace" fill="#2d3748">+ Builder(id, name, email)</text>
+    <text x="305" y="135" font-size="8.5" font-family="monospace" fill="#2d3748">+ phone(p), level(l), major(m)</text>
+    <text x="305" y="150" font-size="8.5" font-family="monospace" fill="#2d3748">+ scholarship(bool), courses(c)</text>
+    <text x="305" y="170" font-size="9.5" font-family="monospace" font-weight="bold" fill="#2b6cb0">+ build(): StudentAccount</text>
+
+    <!-- Builder -> StudentAccount arrow -->
+    <path d="M 295 110 L 273 110" stroke="#2b6cb0" stroke-width="1.8" marker-end="url(#w1Arrow)"/>
+    <text x="282" y="103" text-anchor="middle" font-size="8" font-weight="bold" fill="#2b6cb0">&lt;&lt;builds&gt;&gt;</text>
+
+    <!-- AccountRepository (Singleton) -->
+    <rect x="525" y="8" width="205" height="100" rx="5" fill="#f8fafc" stroke="#234e52" stroke-width="1.6"/>
+    <rect x="525" y="8" width="205" height="30" rx="5" fill="#e6fffa" stroke="#234e52" stroke-width="1.6"/>
+    <text x="627" y="21" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#234e52">&lt;&lt;Singleton (Bill Pugh)&gt;&gt;</text>
+    <text x="627" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a365d">AccountRepository</text>
+    <line x1="525" y1="38" x2="730" y2="38" stroke="#cbd5e0"/>
+    <text x="535" y="52" font-size="8" font-family="monospace" fill="#2d3748">- accountsMap: Map&lt;String, Acc&gt;</text>
+    <line x1="525" y1="58" x2="730" y2="58" stroke="#cbd5e0"/>
+    <text x="535" y="72" font-size="8.5" font-family="monospace" font-weight="bold" fill="#234e52">+ getInstance(): AccountRepo</text>
+    <text x="535" y="86" font-size="8" font-family="monospace" fill="#2d3748">+ addAccount(acc), findById()</text>
+    <text x="535" y="100" font-size="8" font-family="monospace" fill="#2d3748">+ getAllAccounts(): List&lt;Acc&gt;</text>
+
+    <!-- AuditLogger (Singleton) -->
+    <rect x="525" y="120" width="205" height="100" rx="5" fill="#f8fafc" stroke="#234e52" stroke-width="1.6"/>
+    <rect x="525" y="120" width="205" height="30" rx="5" fill="#e6fffa" stroke="#234e52" stroke-width="1.6"/>
+    <text x="627" y="133" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#234e52">&lt;&lt;Singleton (Bill Pugh)&gt;&gt;</text>
+    <text x="627" y="146" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a365d">AuditLogger</text>
+    <line x1="525" y1="150" x2="730" y2="150" stroke="#cbd5e0"/>
+    <text x="535" y="164" font-size="8" font-family="monospace" fill="#2d3748">- memoryLogs: List&lt;String&gt;</text>
+    <line x1="525" y1="170" x2="730" y2="170" stroke="#cbd5e0"/>
+    <text x="535" y="184" font-size="8.5" font-family="monospace" font-weight="bold" fill="#234e52">+ getInstance(): AuditLogger</text>
+    <text x="535" y="198" font-size="8" font-family="monospace" fill="#2d3748">+ log(action, details): void</text>
+    <text x="535" y="212" font-size="8" font-family="monospace" fill="#2d3748">+ getLogs(): List&lt;String&gt;</text>
+
+    <!-- Repository -> AuditLogger -->
+    <path d="M 627 108 L 627 114" stroke="#4a5568" stroke-width="1.4" stroke-dasharray="2,2" marker-end="url(#w1Dash)"/>
+</svg>
